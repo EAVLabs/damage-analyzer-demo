@@ -1,12 +1,13 @@
 const { useState } = React;
 
-const LOGO_DARK_BG = "https://i.ibb.co/3yqTZ5zn/White-Logo-House-with-text-3.png";
+const LOGO_DARK_BG =
+  "https://i.ibb.co/3yqTZ5zn/White-Logo-House-with-text-3.png";
 
 const SEVERITY_COLORS = {
-  none:     "var(--severity-none)",
-  minor:    "var(--severity-minor)",
+  none: "var(--severity-none)",
+  minor: "var(--severity-minor)",
   moderate: "var(--severity-moderate)",
-  severe:   "var(--severity-severe)",
+  severe: "var(--severity-severe)",
   critical: "var(--severity-critical)",
 };
 
@@ -23,9 +24,14 @@ function Tag({ label }) {
 /* ── Confidence bar ── */
 function ConfidenceBar({ pct }) {
   return (
-    <div className="confidence-bar-wrap" role="progressbar"
-         aria-valuenow={pct} aria-valuemin="0" aria-valuemax="100"
-         aria-label={`Confidence ${pct}%`}>
+    <div
+      className="confidence-bar-wrap"
+      role="progressbar"
+      aria-valuenow={pct}
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-label={`Confidence ${pct}%`}
+    >
       <div className="confidence-bar" style={{ width: `${pct}%` }} />
     </div>
   );
@@ -34,7 +40,6 @@ function ConfidenceBar({ pct }) {
 /* ── Result panel ── */
 function ResultPanel({ report }) {
   const pct = Math.round(report.confidence ?? 0);
-  // const pct = Math.round((report.confidence ?? 0) * 100);
   const sev = report.severity ?? "unknown";
   const severityColor = SEVERITY_COLORS[sev] ?? "var(--text)";
 
@@ -59,9 +64,11 @@ function ResultPanel({ report }) {
         <div className="result-item full-width">
           <div className="result-item-label">Damage Categories</div>
           <div className="categories-wrap">
-            {report.categories && report.categories.length > 0
-              ? report.categories.map(cat => <Tag key={cat} label={cat} />)
-              : <span className="text-muted">None detected</span>}
+            {report.categories && report.categories.length > 0 ? (
+              report.categories.map((cat) => <Tag key={cat} label={cat} />)
+            ) : (
+              <span className="text-muted">None detected</span>
+            )}
           </div>
         </div>
       </div>
@@ -116,13 +123,15 @@ function SingleForm() {
     <>
       <form onSubmit={handleSubmit} noValidate>
         <div className="form-group">
-          <label className="form-label" htmlFor="image-url">Image URL</label>
+          <label className="form-label" htmlFor="image-url">
+            Image URL
+          </label>
           <input
             id="image-url"
             type="url"
             className="form-input"
             value={imageUrl}
-            onChange={e => setImageUrl(e.target.value)}
+            onChange={(e) => setImageUrl(e.target.value)}
             placeholder="https://example.com/photo.jpg"
             autoComplete="off"
             aria-required="true"
@@ -135,14 +144,21 @@ function SingleForm() {
           disabled={loading}
           aria-busy={loading}
         >
-          {loading
-            ? <span className="btn-inner"><Spinner />Analyzing…</span>
-            : "Analyze Image"}
+          {loading ? (
+            <span className="btn-inner">
+              <Spinner />
+              Analyzing…
+            </span>
+          ) : (
+            "Analyze Image"
+          )}
         </button>
       </form>
 
       {error && (
-        <div className="error-panel" role="alert" aria-live="assertive">{error}</div>
+        <div className="error-panel" role="alert" aria-live="assertive">
+          {error}
+        </div>
       )}
 
       {report && <ResultPanel report={report} />}
@@ -163,7 +179,10 @@ function BatchForm() {
     setError(null);
     setResults(null);
 
-    const parsed = urlsText.split("\n").map(u => u.trim()).filter(Boolean);
+    const parsed = urlsText
+      .split("\n")
+      .map((u) => u.trim())
+      .filter(Boolean);
     if (parsed.length === 0) {
       setError("Enter at least one image URL.");
       return;
@@ -204,8 +223,10 @@ function BatchForm() {
             id="image-urls"
             className="form-input form-textarea"
             value={urlsText}
-            onChange={e => setUrlsText(e.target.value)}
-            placeholder={"https://example.com/photo1.jpg\nhttps://example.com/photo2.jpg"}
+            onChange={(e) => setUrlsText(e.target.value)}
+            placeholder={
+              "https://example.com/photo1.jpg\nhttps://example.com/photo2.jpg"
+            }
             rows={4}
           />
         </div>
@@ -216,14 +237,21 @@ function BatchForm() {
           disabled={loading}
           aria-busy={loading}
         >
-          {loading
-            ? <span className="btn-inner"><Spinner />Analyzing…</span>
-            : "Analyze Batch"}
+          {loading ? (
+            <span className="btn-inner">
+              <Spinner />
+              Analyzing…
+            </span>
+          ) : (
+            "Analyze Batch"
+          )}
         </button>
       </form>
 
       {error && (
-        <div className="error-panel" role="alert" aria-live="assertive">{error}</div>
+        <div className="error-panel" role="alert" aria-live="assertive">
+          {error}
+        </div>
       )}
 
       {results && results.length === 0 && (

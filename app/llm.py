@@ -42,8 +42,6 @@ DAMAGE_REPORT_SCHEMA = {
 
 def analyze_batch(image_urls: list) -> list:
     results = []
-    for url in image_urls:
-        results.append(analyze_image(url))
     return results
 
 
