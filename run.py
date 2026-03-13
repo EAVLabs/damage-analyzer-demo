@@ -2,7 +2,7 @@
 Entry point for the Damage Analyzer Flask application.
 
 Usage:
-    gunicorn -w 4 -b 0.0.0.0:5000 run:app
+    python run.py
 
 The server reads PORT from the environment (defaults to 5000).
 """
@@ -12,5 +12,7 @@ from app import create_app
 
 app = create_app()
 
-# Note: For production, use a WSGI server like gunicorn.
-# Example: gunicorn -w 4 -b 0.0.0.0:5000 run:app
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 2222))
+    debug = os.environ.get("FLASK_DEBUG", "false").lower() == "true"
+    app.run(host="0.0.0.0", port=port, debug=debug)
