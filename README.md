@@ -18,10 +18,35 @@ Your job is to find and fix the bug, then implement the missing feature.
 
 ## Getting started
 
-To run the application in CodeSandbox, use the following command in the terminal:
+To run the application, use the following command in the terminal:
 
 ```
-gunicorn -w 4 -b 0.0.0.0:5000 run:app
+python run.py
+```
+
+To debug the application using VS Code, ensure you have the following configuration in your `launch.json`:
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Flask",
+      "type": "python",
+      "request": "launch",
+      "module": "flask",
+      "env": {
+        "FLASK_APP": "run.py"
+      },
+      "args": [
+        "run",
+        "--host=0.0.0.0",
+        "--port=5000"
+      ],
+      "jinja": true
+    }
+  ]
+}
 ```
 
 To use the AI agent, use the following command in the terminal:
