@@ -113,4 +113,4 @@ def analyze_batch():
             "message": f"Failed to analyze images: {exc}",
         }), 500
 
-    return jsonify({"results": results}), 200
+    return jsonify({"results": results if results else []}), 200
