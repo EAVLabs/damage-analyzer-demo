@@ -42,6 +42,12 @@ DAMAGE_REPORT_SCHEMA = {
 
 def analyze_batch(image_urls: list) -> list:
     results = []
+    for url in image_urls:
+        try:
+            result = analyze_image(url)
+            results.append(result)
+        except Exception as e:
+            results.append({"error": str(e), "url": url})
     return results
 
 
