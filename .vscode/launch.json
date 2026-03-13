@@ -9,6 +9,7 @@
             "console": "integratedTerminal",
             "pythonPath": "/usr/local/python/3.10.13/bin/python3",
             "justMyCode": true,
+            "justMyCode": true,
             "env": {
                 "FLASK_ENV": "development"
             }
