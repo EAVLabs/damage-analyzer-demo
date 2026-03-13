@@ -13,8 +13,8 @@ from app import create_app
 app = create_app()
 
 if __name__ == "__main__":
-    import subprocess
-    subprocess.run(["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "run:app"])
+    from gunicorn.app.wsgiapp import run
+    run()
 
 # Note: For production, use a WSGI server like gunicorn.
 # Example: gunicorn -w 4 -b 0.0.0.0:5000 run:app
