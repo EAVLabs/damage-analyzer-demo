@@ -5,12 +5,7 @@
             "name": "Run with Gunicorn",
             "type": "python",
             "request": "launch",
-            "module": "flask",
-            "args": [
-                "run",
-                "--host=0.0.0.0",
-                "--port=5000"
-            ],
+            "program": "${workspaceFolder}/run.py",
             "console": "integratedTerminal",
             "env": {
                 "FLASK_ENV": "development"
