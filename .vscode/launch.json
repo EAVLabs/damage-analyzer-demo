@@ -6,7 +6,12 @@
             "type": "python",
             "justMyCode": true,
             "request": "launch",
-            "program": "${workspaceFolder}/run.py",
+            "module": "gunicorn",
+            "args": [
+                "-w", "4",
+                "-b", "0.0.0.0:5000",
+                "run:app"
+            ],
             "console": "integratedTerminal",
             "env": {
                 "FLASK_ENV": "development"
