@@ -18,7 +18,17 @@ Your job is to find and fix the bug, then implement the missing feature.
 
 ## Getting started
 
-The app is already running — open the preview pane in Replit to use it.
+To run the application in CodeSandbox, use the following command in the terminal:
+
+```
+gunicorn -w 4 -b 0.0.0.0:5000 run:app
+```
+
+To use the AI agent, use the following command in the terminal:
+
+```
+aider
+```
 
 ### Sample image URLs
 
