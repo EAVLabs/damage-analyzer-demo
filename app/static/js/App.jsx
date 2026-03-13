@@ -39,7 +39,7 @@ function ConfidenceBar({ pct }) {
 
 /* ── Result panel ── */
 function ResultPanel({ report }) {
-  const pct = Math.round(report.confidence ?? 0);
+  const pct = Math.round((report.confidence ?? 0) * 100);
   const sev = report.severity ?? "unknown";
   const severityColor = SEVERITY_COLORS[sev] ?? "var(--text)";
 
