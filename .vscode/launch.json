@@ -7,6 +7,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/run.py",
             "console": "integratedTerminal",
+            "pythonPath": "/usr/local/python/3.10.13/bin/python3",
             "env": {
                 "FLASK_ENV": "development"
             }
