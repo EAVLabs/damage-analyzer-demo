@@ -120,4 +120,8 @@ def analyze_image(image_url: str) -> dict:
         )
 
     content = response.json()["choices"][0]["message"]["content"]
-    return json.loads(content)
+    result = json.loads(content)
+    # Ensure confidence is a float between 0.0 and 1.0
+    if "confidence" in result:
+        result["confidence"] = float(result["confidence"])
+    return result
