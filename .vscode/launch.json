@@ -4,6 +4,7 @@
         {
             "name": "Run with Gunicorn",
             "type": "python",
+            "justMyCode": true,
             "request": "launch",
             "program": "${workspaceFolder}/run.py",
             "console": "integratedTerminal",
