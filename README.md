@@ -24,11 +24,6 @@ To run the application, use the following command in the terminal:
 python run.py
 ```
 
-To debug the application using VS Code, ensure you have the following configuration in your `launch.json`:
-
-```json
-```
-
 To use the AI agent, use the following command in the terminal:
 
 ```
