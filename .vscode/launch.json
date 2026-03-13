@@ -4,14 +4,8 @@
         {
             "name": "Run with Gunicorn",
             "type": "python",
-            "justMyCode": true,
             "request": "launch",
-            "module": "gunicorn",
-            "args": [
-                "-w", "4",
-                "-b", "0.0.0.0:5000",
-                "run:app"
-            ],
+            "program": "${workspaceFolder}/run.py",
             "console": "integratedTerminal",
             "env": {
                 "FLASK_ENV": "development"
